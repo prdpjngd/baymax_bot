@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+<meta charset="UTF-8">
+<title>Chatbot - Dialogflow</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+</head>
+
+<body>
+
+  <div id="chat-circle" class=" btn-raised">
+<svg class="icon-speech" viewBox="0 0 48 48">
+      <use xlink:href="#icon-speech" />
+    </svg>	</div>
+
+
+<div class="chatbot chatbot--closed ">
+  <div class="chatbot__header">
+
+    <p><strong></strong>NEED HELP ?<span class="u-text-highlight"><em>Ask Baymax!</em></span></p>
+    <svg class="chatbot__close-button icon-speech" viewBox="0 0 32 32">
+      <use xlink:href="#icon-speech" />
+    </svg>
+    <svg class="chatbot__close-button icon-close" viewBox="0 0 32 32">
+      <use xlink:href="#icon-close" />
+    </svg>
+  </div>
+  <div class="chatbot__message-window">
+    <ul class="chatbot__messages">
+      <li class="is-ai animation">
+        <div class="is-ai__profile-picture">
+          <svg class="icon-avatar" viewBox="0 0 32 32">
+            <use xlink:href="#avatar" />
+          </svg>
+        </div>
+        <span class="chatbot__arrow chatbot__arrow--left"></span>
+        <p class='chatbot__message'><strong class='intro'>Wassup, I’m Baymax, your virtual assistant. I'm here to help with your general enquiries.</strong> </em></p>
+      </li>
+      <!-- Message here -->
+    </ul>
+  </div>
+  <div class="chatbot__entry chatbot--closed">
+    <input id="user_text" type="text" class="chatbot__input" placeholder="Write a message..." />
+    <svg class="chatbot__submit" viewBox="0 0 32 32">
+      <use xlink:href="#icon-send" />
+    </svg>
+  </div>
+</div>
+
+<!-- Symbols -->
+<svg>
+  <!-- Close icon -->
+  <symbol id="icon-close" viewBox="0 0 32 32">
+    <title>Close</title>
+    <path d="M2.624 8.297l2.963-2.963 23.704 23.704-2.963 2.963-23.704-23.704z" />
+    <path d="M2.624 29.037l23.704-23.704 2.963 2.963-23.704 23.704-2.963-2.963z" />
+  </symbol>
+
+  <!-- Speech icon -->
+  <symbol id="icon-speech" viewBox="0 0 32 32">
+    <title>Speech</title>
+    <path style="fill: #ffffff; fill-rule: evenodd;" d="M21.795 5.333h-11.413c-0.038 0-0.077 0-0.114 0l-0.134 0.011v2.796c0.143-0.006 0.273-0.009 0.385-0.009h11.277c0.070 0 7.074 0.213 7.074 7.695 0 5.179-2.956 7.695-9.036 7.695h-3.792c-0.691 0-1.12 0.526-1.38 1.159l-1.387 3.093-1.625 3.77 0.245 0.453h2.56l2.538-5.678h2.837c7.633 0 11.84-3.727 11.84-10.494 0.001-8.564-7.313-10.492-9.875-10.492z" />
+    <path style="fill: #ffffff; fill-rule: evenodd;" d="M10.912 24.259c-0.242-0.442-0.703-0.737-1.234-0.737-0 0-0 0-0 0h-0.56c-0.599-0.011-1.171-0.108-1.71-0.28l0.042 0.012c-1.82-0.559-4.427-2.26-4.427-7.424 0-6.683 5.024-7.597 7.109-7.686v-2.8c-2.042 0.095-9.91 1.067-9.91 10.483 0 4.832 1.961 7.367 3.606 8.64 1.38 1.067 3.109 1.744 4.991 1.843l0.033 0.019 2.805 5.211 1.41-3.273z" />
+  </symbol>
+
+  <!-- Send icon -->
+  <symbol id="icon-send" viewBox="0 0 23.97 21.9">
+    <title>Send</title>
+    <path d="M0.31,9.43a0.5,0.5,0,0,0,0,.93l8.3,3.23L23.15,0Z"/>
+    <path d="M9,14.6H9V21.4a0.5,0.5,0,0,0,.93.25L13.22,16l6,3.32A0.5,0.5,0,0,0,20,19l4-18.4Z"/>
+  </symbol>
+
+  <!-- Avatar icon -->
+  <symbol id="avatar" width="44.25" height="44" viewBox="0 0 44.25 44">
+    <title>Avatar</title>
+    <path style="fill: #bf2024; fill-rule: evenodd;" d="M1035.88,1696.25a22,22,0,1,1-22.13,22A22.065,22.065,0,0,1,1035.88,1696.25Z" transform="translate(-1013.75 -1696.25)"/>
+    <path style="fill: #fff; fill-rule: evenodd;" d="M1030.18,1725.16h2.35a0.335,0.335,0,0,0,.34-0.33v-5.23h5.94v5.23a0.342,0.342,0,0,0,.34.33h2.36a0.342,0.342,0,0,0,.34-0.33v-12.36a0.34,0.34,0,0,0-.34-0.32h-2.36a0.34,0.34,0,0,0-.34.32v4.51h-5.94v-4.51a0.333,0.333,0,0,0-.34-0.32h-2.35a0.333,0.333,0,0,0-.34.32v12.36a0.335,0.335,0,0,0,.34.33" transform="translate(-1013.75 -1696.25)"/>
+  </symbol>
+
+</svg>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js'></script>
+
+
+
+    <script>
+var msg = document.getElementById("user_text");
+      const accessToken = "2d1ddeaadc20462dba88c9beebbe0a21";
+const baseUrl = "https://api.api.ai/api/query?v=20150910";
+const sessionId = "1";
+const loader = `<span class='loader'><span class='loader__dot'></span><span class='loader__dot'></span><span class='loader__dot'></span></span>`;
+const errorMessage = "My apologies, I'm not available at the moment. =^.^=";
+const urlPattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+const loadingDelay = 700;
+const aiReplyDelay = 1800;
+
+const $document = document;
+const $chatbot = $document.querySelector(".chatbot");
+const $chatbotMessageWindow = $document.querySelector(
+".chatbot__message-window");
+
+const $chatbotHeader = $document.querySelector(".chatbot__header");
+const $chatbotMessages = $document.querySelector(".chatbot__messages");
+const $chatbotInput = $document.querySelector(".chatbot__input");
+const $chatbotSubmit = $document.querySelector(".chatbot__submit");
+
+document.addEventListener(
+"keypress",
+event => {
+  if (event.which == 13) {
+    validateMessage();
+  }
+},
+false);
+
+
+$chatbotHeader.addEventListener(
+"click",
+() => {
+
+  var element = document.getElementsByClassName("chatbot");
+  element[0].style.display = "none";
+  document.getElementById("chat-circle").style.display = "block";
+},
+false);
+
+
+$chatbotSubmit.addEventListener(
+"click",
+() => {
+  validateMessage();
+},
+false);
+
+document.getElementById("chat-circle").addEventListener(
+"click",
+() => {
+  var element = document.getElementsByClassName("chatbot");
+  element[0].classList.remove("chatbot--closed");
+  element[0].style.display = "block";
+  $chatbotInput.focus();
+  console.log(this);
+  document.getElementById("chat-circle").style.display = "none";
+
+});
+
+const toggle = (element, klass) => {
+  const classes = element.className.match(/\S+/g) || [],
+  index = classes.indexOf(klass);
+  index >= 0 ? classes.splice(index, 1) : classes.push(klass);
+  element.className = classes.join(" ");
+};
+
+const userMessage = content => {
+  $chatbotMessages.innerHTML += `<li class='is-user animation'>
+      <p class='chatbot__message'>
+        ${content}
+      </p>
+      <span class='chatbot__arrow chatbot__arrow--right'></span>
+    </li>`;
+};
+
+const aiMessage = (content, isLoading = false, delay = 0) => {
+  setTimeout(() => {
+    removeLoader();
+    $chatbotMessages.innerHTML += `<li
+      class='is-ai animation'
+      id='${isLoading ? "is-loading" : ""}'>
+        <div class="is-ai__profile-picture">
+          <svg class="icon-avatar" viewBox="0 0 32 32">
+            <use xlink:href="#avatar" />
+          </svg>
+        </div>
+        <span class='chatbot__arrow chatbot__arrow--left'></span>
+        <div class='chatbot__message'>
+          ${content}
+        </div>
+      </li>`;
+    scrollDown();
+  }, delay);
+};
+
+const removeLoader = () => {
+  let loadingElem = document.getElementById("is-loading");
+  if (loadingElem) {
+    $chatbotMessages.removeChild(loadingElem);
+  }
+};
+
+const escapeScript = unsafe => {
+  const safeString = unsafe.
+  replace(/</g, " ").
+  replace(/>/g, " ").
+  replace(/&/g, " ").
+  replace(/"/g, " ").
+  replace(/\\/, " ").
+  replace(/\s+/g, " ");
+  return safeString.trim();
+};
+
+const linkify = inputText => {
+  return inputText.replace(urlPattern, `<a href='$1' target='_blank'>$1</a>`);
+};
+
+const validateMessage = () => {
+  const text = $chatbotInput.value;
+  const safeText = text ? escapeScript(text) : "";
+  if (safeText.length && safeText !== " ") {
+    resetInputField();
+    userMessage(safeText);
+    send(safeText);
+  }
+  scrollDown();
+  return;
+};
+
+const multiChoiceAnswer = text => {
+  const decodedText = text.replace(/zzz/g, "'");
+  userMessage(decodedText);
+  send(decodedText);
+  scrollDown();
+  return;
+};
+
+const processResponse = val => {
+  removeLoader();
+
+  if (val.fulfillment) {
+    let output = "";
+    let messagesLength = val.fulfillment.messages.length;
+
+    for (let i = 0; i < messagesLength; i++) {
+      let message = val.fulfillment.messages[i];
+      let type = message.type;
+
+      switch (type) {
+        case 0:
+          let parsedText = linkify(message.speech);
+          output += `<p>${parsedText}</p>`;
+          break;
+
+
+        case 1:
+
+          break;
+
+
+        case 2:
+          let title = message.title;
+          let replies = message.replies;
+          let repliesLength = replies.length;
+          output += `<p>${title}</p>`;
+
+          for (let i = 0; i < repliesLength; i++) {
+            let reply = replies[i];
+            let encodedText = reply.replace(/'/g, "zzz");
+            output += `<button onclick='multiChoiceAnswer("${encodedText}")'>${reply}</button>`;
+          }
+
+          break;
+
+
+        case 3:
+
+          break;}
+
+    }
+
+    return output;
+  } else {
+    return val;
+  }
+};
+
+const setResponse = (val, delay = 0) => {
+  setTimeout(() => {
+    aiMessage(processResponse(val));
+  }, delay);
+};
+
+const resetInputField = () => {
+  $chatbotInput.value = "";
+};
+
+const scrollDown = () => {
+  const distanceToScroll =
+  $chatbotMessageWindow.scrollHeight - (
+  $chatbotMessages.lastChild.offsetHeight + 60);
+  $chatbotMessageWindow.scrollTop = distanceToScroll;
+  return false;
+};
+
+const send = (text = "") => {
+  var x = window.location.search.substr(1).split("=")[1];
+  aiMessage(loader, true, loadingDelay);
+  $.ajax({
+   type: 'GET',
+   data: {q :`${text}`,s_id : x},
+   url: "/bot",
+   success: function(response) {
+     setResponse(response, loadingDelay + aiReplyDelay);
+   }
+});
+
+
+};
+    </script>
+
+
+
+
+</body>
+
+</html>
