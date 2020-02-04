@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="login_styler.css">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login_styler.css') }}">
 </head>
 <body>
   <div class="wall">
-    <form method='post' id="frm1" onsubmit="return testfn()">
+    <form method='get' id="frm1" onsubmit="return testfn()">
       <h1>Login Here</h1>
       <input type="text" name="username" id="username" placeholder="Username">
       <br>
@@ -25,12 +25,12 @@ function testfn() {
   $.ajax
   ({
   type:'post',
-  url:'http://13.232.26.171/cgi-bin/login.py',
+  url:'/login',
   data:{username:uname,password:pass},
   success:function(response) {
         if(response.split(",")[0]==1){
 alert(1);
-                window.location.href = "http://13.232.26.171/home/index.html?token="+response.split(",")[1];
+                window.location.href = window.location+"?token="+response.split(",")[1];
         }
         else{
 	alert(0);
