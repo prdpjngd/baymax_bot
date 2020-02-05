@@ -5,42 +5,16 @@
 </head>
 <body>
   <div class="wall">
-    <form method='get' id="frm1" onsubmit="return testfn()">
+    <form method='get' id="frm1">
       <h1>Login Here</h1>
       <input type="text" name="username" id="username" placeholder="Username">
       <br>
       <input type="password" name="password" id="password" placeholder="Password"><br>
-      <input id = "btn" type="submit" value="Submit" id="sub-mit" onClick="testfn()">
+      <input id = "btn" type="submit" value="Submit" id="sub-mit">
       <p id="demo"></p>
     </form>
   </div>
   <p id="demo1"></p>
   <p id="demo2"></p>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script type="text/javascript">
-function testfn() {
-  var x = document.getElementById("frm1");
-  var uname = x.elements[0].value
-  var pass = x.elements[1].value
-  $.ajax
-  ({
-  type:'post',
-  url:'/login',
-  data:{username:uname,password:pass},
-  success:function(response) {
-        if(response.split(",")[0]==1){
-alert(1);
-                window.location.href = window.location+"?token="+response.split(",")[1];
-        }
-        else{
-	alert(0);
-                document.getElementById("demo").innerHTML = "Wrong username or password";
-        }
-
-  }
-  });
-  return false;
-}
-</script>
 </body>
 </html>
