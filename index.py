@@ -33,6 +33,7 @@ def df():
 
         r=requests.get('https://console.dialogflow.com/api-client/demo/embedded/86f65547-dbee-4b4a-ae30-28d6b297f137/demoQuery', headers=headers, params=params).text
         j=json.loads(r)
+        
         return j['result']['fulfillment']['speech']
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
