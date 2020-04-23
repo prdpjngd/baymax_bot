@@ -1,6 +1,5 @@
 flask
 gunicorn
 requests
-string
 random
 urllib
