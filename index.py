@@ -1,8 +1,6 @@
 import requests
-import ast
 import urllib.parse
 import base64
-import os
 import json,string,random
 from flask import Flask, render_template, request, redirect, make_response, session,url_for
 app = Flask(__name__)
@@ -18,7 +16,7 @@ def df():
         f = open("./sessions/"+s_id,"a+")
         if 'logout' in q:
             session.pop('uname', None)
-            return "see you ... you are logged out"
+            return "see you ... you'r logged out"
         else:
             f.write(q+"%227%")
             f.close()
