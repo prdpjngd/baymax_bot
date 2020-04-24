@@ -44,7 +44,6 @@ def df():
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
 
         sentiments=sentiment_solo/length(seprate_chat)
-
         #spotipy-setup
         client_id="bb592cc71fbf46ba83c57b311f9e0c7d"
         client_secret="74fa7053d85449bcadc234693b065821"
@@ -56,34 +55,34 @@ def df():
         genres=''
         ans=''
         if sentiments <= -.1 and sentiments > -.2:
-            ans="I think you should listen folk ,\n Here is the link:"+url+"
+            ans="I think you should listen folk ,\n Here is the link:"+url
             genres='roots'
         elif sentiments >=.1 and sentiments <.2:
-            ans="I think you should listen chill ,\n Here is the link:"+url+"
+            ans="I think you should listen chill ,\n Here is the link:"+url
             genres='chill'
         elif sentiments >=.2 and sentiments <.3:
-            ans="I think you should listen indian ,\n Here is the link:"+url+"
+            ans="I think you should listen indian ,\n Here is the link:"+url
             genres='indian'
         elif sentiments <=-.2 and sentiments >-.3:
-            ans="I think you should listen classical ,\n Here is the link:"+url+"
+            ans="I think you should listen classical ,\n Here is the link:"+url
             genres='classical'
         elif sentiments >=.6 and sentiments <.8:
-            ans="I think you should listen dance ,\n Here is the link:"+url+"
+            ans="I think you should listen dance ,\n Here is the link:"+url
             genres='party'
         elif sentiments <=-.6 and sentiments >-.8:
-            ans="I think you should listen romance ,\n Here is the link:"+url+"
+            ans="I think you should listen romance ,\n Here is the link:"+url
             genres='romance'
         elif sentiments >=.4 and sentiments <.6:
-            ans="I think you should listen happy ,\n Here is the link:"+url+"
+            ans="I think you should listen happy ,\n Here is the link:"+url
             genres='happy'
         elif sentiments <.4 and sentiments >=.3:
-            ans="I think you should listen hip-hop ,\n Here is the link:"+url+"
+            ans="I think you should listen hip-hop ,\n Here is the link:"+url
             genres='hip-hop'
         elif sentiments >=.8 and sentiments <1.0:
-            ans="I think you should listen disco music ,\n Here is the link:"+url+"
+            ans="I think you should listen disco music ,\n Here is the link:"+url
             genres='disco'
         elif sentiments >-0.1 and sentiments <=0.1:
-            ans="I think you should listen dubstep music,\n Here is the link:"+url+"
+            ans="I think you should listen dubstep music,\n Here is the link:"+url
             genres='dubstep'
 
 
