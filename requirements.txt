@@ -1,3 +1,6 @@
 flask
 gunicorn
 requests
+spotipy
+nltk
+textblob
