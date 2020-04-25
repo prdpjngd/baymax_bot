@@ -77,7 +77,7 @@ def df():
             genres='dubstep'
         url=url.replace("https://open.spotify.com/","https://open.spotify.com/embed/")
         ans=ans+'<iframe src="'+url+'" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
-        return str(ans)+'<br>'+j['result']['fulfillment']['speech']+'sentiment :'+str(sentiments)
+        return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'I suggest you some music to fresh your mood <br>'+str(ans)
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
 
