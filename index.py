@@ -38,12 +38,13 @@ def df():
         sentiment_solo=0
         f = open("./sessions/"+s_id,"r")
         chat_history=f.read()
+        f.close()
         seprate_chat=chat_history.spit("%227%")
         for i in seprate_chat:
             analysis=TextBlob(i)
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
 
-        sentiments=sentiment_solo/length(seprate_chat)
+        sentiments=sentiment_solo/len(seprate_chat)
         #spotipy-setup
         client_id="bb592cc71fbf46ba83c57b311f9e0c7d"
         client_secret="74fa7053d85449bcadc234693b065821"
