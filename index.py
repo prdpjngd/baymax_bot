@@ -39,7 +39,7 @@ def df():
         f = open("./sessions/"+s_id,"r")
         chat_history=f.read()
         f.close()
-        seprate_chat=chat_history.spit("%227%")
+        seprate_chat=chat_history.split("%227%")
         for i in seprate_chat:
             analysis=TextBlob(i)
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
