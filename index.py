@@ -45,48 +45,38 @@ def df():
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
 
         sentiments=sentiment_solo/len(seprate_chat)
-        #spotipy-setup
-        client_id="bb592cc71fbf46ba83c57b311f9e0c7d"
-        client_secret="74fa7053d85449bcadc234693b065821"
-        client_credentials_manager=SpotifyClientCredentials(client_id=client_id,client_secret=client_secret)
-        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        result=sp.search("Happier")
-        url=result["tracks"]["items"][0]["artists"][0]["external_urls"]["spotify"]
-
         genres=''
         ans=''
         if sentiments <= -.1 and sentiments > -.2:
-            ans="I think you should listen folk"
+            url="https://open.spotify.com/playlist/3pr1uTmByJcCqcfUHNNDQa"
             genres='roots'
         elif sentiments >=.1 and sentiments <.2:
-            ans="I think you should listen chill"
+            url="https://open.spotify.com/playlist/37i9dQZF1DX889U0CL85jj"
             genres='chill'
         elif sentiments >=.2 and sentiments <.3:
-            ans="I think you should listen indian"
-            genres='indian'
+            url="https://open.spotify.com/playlist/1EO12soyEcN8KPfTqyqkxY"
         elif sentiments <=-.2 and sentiments >-.3:
-            ans="I think you should listen classical"
-            genres='classical'
+            url="https://open.spotify.com/playlist/6an0hNyshVMWORG7qVNUbq"
         elif sentiments >=.6 and sentiments <.8:
-            ans="I think you should listen dance"
+            url="https://open.spotify.com/playlist/2jAQlUjsDn0FrdECMLFdrF"
             genres='party'
         elif sentiments <=-.6 and sentiments >-.8:
-            ans="I think you should listen romance"
+            url="https://open.spotify.com/playlist/1oSlx4XxBp12uknXcuhaDg"
             genres='romance'
         elif sentiments >=.4 and sentiments <.6:
-            ans="I think you should listen happy"
+            url="https://open.spotify.com/playlist/4kE5mLoJMWBwQjx0jKzIFJ"
             genres='happy'
         elif sentiments <.4 and sentiments >=.3:
-            ans="I think you should listen hip-hop"
+            url="https://open.spotify.com/playlist/0wOMJ3Hs0KVvKbGUNOlmo1"
             genres='hip-hop'
         elif sentiments >=.8 and sentiments <1.0:
-            ans="I think you should listen disco music"
+            url="https://open.spotify.com/playlist/2jAQlUjsDn0FrdECMLFdrF"
             genres='disco'
         elif sentiments >-0.1 and sentiments <=0.1:
-            ans="I think you should listen dubstep music"
+            url="https://open.spotify.com/playlist/3ObJ6Qra3CkV0gNCRTtK0c"
             genres='dubstep'
-
-        ans='<iframe src="https://open.spotify.com/embed/artist/64KEffDW9EtZ1y2vBYgq8T" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+        url=url.replace("https://open.spotify.com/","https://open.spotify.com/embed/")
+        ans=ans+'<iframe src="'+url+'" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
         return str(ans)+'<br>'+j['result']['fulfillment']['speech']+'sentiment :'+str(sentiments)
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
