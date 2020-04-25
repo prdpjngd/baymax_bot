@@ -56,37 +56,37 @@ def df():
         genres=''
         ans=''
         if sentiments <= -.1 and sentiments > -.2:
-            ans="I think you should listen folk ,\n Here is the link:"+url
+            ans="I think you should listen folk"
             genres='roots'
         elif sentiments >=.1 and sentiments <.2:
-            ans="I think you should listen chill ,\n Here is the link:"+url
+            ans="I think you should listen chill"
             genres='chill'
         elif sentiments >=.2 and sentiments <.3:
-            ans="I think you should listen indian ,\n Here is the link:"+url
+            ans="I think you should listen indian"
             genres='indian'
         elif sentiments <=-.2 and sentiments >-.3:
-            ans="I think you should listen classical ,\n Here is the link:"+url
+            ans="I think you should listen classical"
             genres='classical'
         elif sentiments >=.6 and sentiments <.8:
-            ans="I think you should listen dance ,\n Here is the link:"+url
+            ans="I think you should listen dance"
             genres='party'
         elif sentiments <=-.6 and sentiments >-.8:
-            ans="I think you should listen romance ,\n Here is the link:"+url
+            ans="I think you should listen romance"
             genres='romance'
         elif sentiments >=.4 and sentiments <.6:
-            ans="I think you should listen happy ,\n Here is the link:"+url
+            ans="I think you should listen happy"
             genres='happy'
         elif sentiments <.4 and sentiments >=.3:
-            ans="I think you should listen hip-hop ,\n Here is the link:"+url
+            ans="I think you should listen hip-hop"
             genres='hip-hop'
         elif sentiments >=.8 and sentiments <1.0:
-            ans="I think you should listen disco music ,\n Here is the link:"+url
+            ans="I think you should listen disco music"
             genres='disco'
         elif sentiments >-0.1 and sentiments <=0.1:
-            ans="I think you should listen dubstep music,\n Here is the link:"+url
+            ans="I think you should listen dubstep music"
             genres='dubstep'
 
-
+        ans='<iframe src="https://open.spotify.com/embed/artist/64KEffDW9EtZ1y2vBYgq8T" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
         return str(ans)+'<br>'+j['result']['fulfillment']['speech']+'sentiment :'+str(sentiments)
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
