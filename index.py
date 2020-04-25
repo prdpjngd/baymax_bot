@@ -46,38 +46,51 @@ def df():
 
         sentiments=sentiment_solo/len(seprate_chat)
         genres=''
-        ans=''
+        chat=''
         if sentiments <= -.1 and sentiments > -.2:
+            chat="I suggest you some music to fresh your mood "
             url="https://open.spotify.com/playlist/3pr1uTmByJcCqcfUHNNDQa"
             genres='roots'
         elif sentiments >=.1 and sentiments <.2:
+            chat="I suggest you some music to fresh your mood"
             url="https://open.spotify.com/playlist/37i9dQZF1DX889U0CL85jj"
             genres='chill'
         elif sentiments >=.2 and sentiments <.3:
+            chat="want some music"
             url="https://open.spotify.com/playlist/1EO12soyEcN8KPfTqyqkxY"
         elif sentiments <=-.2 and sentiments >-.3:
             url="https://open.spotify.com/playlist/6an0hNyshVMWORG7qVNUbq"
         elif sentiments >=.6 and sentiments <.8:
+            chat='you r seem fresh today.Want some party music'
             url="https://open.spotify.com/playlist/2jAQlUjsDn0FrdECMLFdrF"
             genres='party'
         elif sentiments <=-.6 and sentiments >-.8:
+            chat="I think you seem very upset today"
             url="https://open.spotify.com/playlist/1oSlx4XxBp12uknXcuhaDg"
             genres='romance'
         elif sentiments >=.4 and sentiments <.6:
+            chat="Want to hear some music today"
             url="https://open.spotify.com/playlist/4kE5mLoJMWBwQjx0jKzIFJ"
             genres='happy'
         elif sentiments <.4 and sentiments >=.3:
+            chat="I suggest you to hear some fresh music"
             url="https://open.spotify.com/playlist/0wOMJ3Hs0KVvKbGUNOlmo1"
             genres='hip-hop'
         elif sentiments >=.8 and sentiments <1.0:
+            chat="You r very happy today. Want some party music"
             url="https://open.spotify.com/playlist/2jAQlUjsDn0FrdECMLFdrF"
             genres='disco'
         elif sentiments >-0.1 and sentiments <=0.1:
+            chat="if you fill bored then I suggest you some music"
             url="https://open.spotify.com/playlist/3ObJ6Qra3CkV0gNCRTtK0c"
             genres='dubstep'
+
+        #Player Embed Creation
         url=url.replace("https://open.spotify.com/","https://open.spotify.com/embed/")
-        ans=ans+'<iframe src="'+url+'" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
-        return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'I suggest you some music to fresh your mood <br>'+str(ans)
+        player='<iframe src="'+url+'" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+
+        #return to chat box
+        return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'str(ans)
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
 
