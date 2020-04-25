@@ -87,10 +87,10 @@ def df():
 
         #Player Embed Creation
         url=url.replace("https://open.spotify.com/","https://open.spotify.com/embed/")
-        player='<iframe src="'+url+'" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+        player='<iframe src="'+url+'" width="280" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
 
         #return to chat box
-        return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'str(ans)
+        return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'+str(player)
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
 
