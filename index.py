@@ -87,7 +87,7 @@ def df():
             genres='dubstep'
 
 
-        return ans+'<br>'+j['result']['fulfillment']['speech']+'sentiment :'+sentiments
+        return str(ans)+'<br>'+j['result']['fulfillment']['speech']+'sentiment :'+str(sentiments)
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
 
