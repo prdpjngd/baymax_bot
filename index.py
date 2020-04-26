@@ -45,7 +45,7 @@ def df():
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
 
         sentiments=sentiment_solo/len(seprate_chat)
-        if len(seprate_chat)/3==0
+        if len(seprate_chat)/3==0:
             genres=''
             chat=''
             if sentiments <= -.1 and sentiments > -.2:
@@ -91,7 +91,7 @@ def df():
             player='<iframe src="'+url+'" width="280" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
             return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'+str(player)
 
-        elif len(seprate_chat)/5==0
+        elif len(seprate_chat)/5==0:
             response = requests.get('https://official-joke-api.appspot.com/random_joke').text
             joke=response.split('"setup":"')[1].split('"}')[0].replace('","',' ').replace('":"',' : ')
             chat="I found a Something Funny that is ... "
