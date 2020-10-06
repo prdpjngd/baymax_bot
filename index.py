@@ -52,7 +52,7 @@ def df():
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
         sentiments=sentiment_solo/len(seprate_chat)
         print('5')
-        print('>>>>'+str(seprate_chat))
+        print('>>>>'+str(len(seprate_chat)))
         if len(seprate_chat)/3==0:
             print('6.1')
             genres=''
@@ -108,7 +108,7 @@ def df():
             return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'+str(joke)
         else:
             print('6.3')
-            return r
+            return j['result']['fulfillment']['speech']
 
     else:
         return "{Error:True,Type:Invalid Session ID,Code:507},"
