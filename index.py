@@ -53,7 +53,7 @@ def df():
         sentiments=sentiment_solo/len(seprate_chat)
         print('5')
         print('>>>>'+str(len(seprate_chat)))
-        if len(seprate_chat)/3==0:
+        if len(seprate_chat)%3==0:
             print('6.1')
             genres=''
             chat=''
@@ -100,7 +100,7 @@ def df():
             player='<iframe src="'+url+'" width="280" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
             return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'+str(player)
 
-        elif len(seprate_chat)/5==0:
+        elif len(seprate_chat)%5==0:
             print('6.2')
             response = requests.get('https://official-joke-api.appspot.com/random_joke').text
             joke=response.split('"setup":"')[1].split('"}')[0].replace('","',' ').replace('":"',' : ')
