@@ -19,14 +19,14 @@ def df():
     
     print('1')
     if s_id :
-        logging.info('2')
+        print('2')
         f = open("./sessions/"+s_id,"a+")
         if 'logout' in q:
-            logging.info('2.1')
+            print('2.1')
             session.pop('uname', None)
             return "see you ... you'r logged out"
         else:
-            logging.info('2.2')
+            print('2.2')
             f.write(q+"%227%")
             f.close()
             headers = {
@@ -38,10 +38,10 @@ def df():
                 ('sessionId', s_id),
             )
             #else-end-here
-        logging.info('3')
+        print('3')
         r=requests.get('https://console.dialogflow.com/api-client/demo/embedded/86f65547-dbee-4b4a-ae30-28d6b297f137/demoQuery', headers=headers, params=params).text
         j=json.loads(r)
-        logging.info('4')
+        print('4')
         sentiment_solo=0
         f = open("./sessions/"+s_id,"r")
         chat_history=f.read()
@@ -51,10 +51,10 @@ def df():
             analysis=TextBlob(i)
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
         sentiments=sentiment_solo/len(seprate_chat)
-        logging.info('5')
-        logging.info('>>>>'+str(seprate_chat))
+        print('5')
+        print('>>>>'+str(seprate_chat))
         if len(seprate_chat)/3==0:
-            logging.info('6.1')
+            print('6.1')
             genres=''
             chat=''
             if sentiments <= -.1 and sentiments > -.2:
@@ -94,14 +94,14 @@ def df():
                 chat="if you fill bored then I suggest you some music"
                 url="https://open.spotify.com/playlist/4kE5mLoJMWBwQjx0jKzIFJ"
                 genres='dubstep'
-            logging.info('6.1.1')
+            print('6.1.1')
             #Player Embed Creation
             url=url.replace("https://open.spotify.com/","https://open.spotify.com/embed/")
             player='<iframe src="'+url+'" width="280" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
             return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'+str(player)
 
         elif len(seprate_chat)/5==0:
-            logging.info('6.2')
+            print('6.2')
             response = requests.get('https://official-joke-api.appspot.com/random_joke').text
             joke=response.split('"setup":"')[1].split('"}')[0].replace('","',' ').replace('":"',' : ')
             chat="I found a Something Funny that is ... "
