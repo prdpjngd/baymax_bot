@@ -4,3 +4,4 @@ requests
 spotipy
 nltk
 textblob
+console-log
