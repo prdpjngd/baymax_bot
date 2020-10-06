@@ -106,7 +106,8 @@ def df():
             joke=response.split('"setup":"')[1].split('"}')[0].replace('","',' ').replace('":"',' : ')
             chat="I found a Something Funny that is ... "
             return j['result']['fulfillment']['speech']+'<br>sentiment '+str(sentiments)+'<br>'+chat+'<br>'+str(joke)
-        else 
+        else:
+            print('6.3')
             return r
 
     else:
