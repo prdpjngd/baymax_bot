@@ -17,7 +17,7 @@ def df():
     q = request.args.get('q')
     s_id = request.args.get('s_id')
     
-    logging.info('1')
+    print('1')
     if s_id :
         logging.info('2')
         f = open("./sessions/"+s_id,"a+")
