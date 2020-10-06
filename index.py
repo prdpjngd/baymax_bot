@@ -52,7 +52,7 @@ def df():
             sentiment_solo=sentiment_solo+analysis.sentiment.polarity
         sentiments=sentiment_solo/len(seprate_chat)
         logging.info('5')
-        logging.info('>>>>'+seprate_chat)
+        logging.info('>>>>'+str(seprate_chat))
         if len(seprate_chat)/3==0:
             logging.info('6.1')
             genres=''
